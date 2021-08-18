@@ -1,0 +1,171 @@
+<header *ngIf = '!userType'>
+    <h1 class='logo'>Logo</h1>
+    <nav>
+        <ul>
+            <li><a (click) = 'home()'>Home</a></li>
+            <li>
+                <label for="show" class="showLoginForm">Izdavanje</label>
+                <ul>
+                    <li><label for="show" class="showLoginForm">Izdavanje stanova</label></li>
+                    <li><label for="show" class="showLoginForm">Izdavanje kuća</label></li>
+                </ul>
+            </li>
+            <li>
+                <label for="show" class="showLoginForm">Prodaja</label>
+                <ul>
+                    <li><label for="show" class="showLoginForm">Prodaja stanova</label></li>
+                    <li><label for="show" class="showLoginForm">Prodaja kuća</label></li>
+                </ul>
+            </li>
+            <li>
+                <label for="show" class="showLoginForm">Prijava</label>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Ako je ulogovan korisnik onda prikazati header ispod -->
+<header *ngIf = 'userType == 1'>
+    <h1 class='logo'>Logo</h1>
+    <nav>
+        <ul>
+            <li><a (click) = 'home()'>Home</a></li>
+            <li>
+                <a (click)="rents()" class="dropdown">Izdavanje</a>
+                <ul>
+                    <li><a (click)="rentsApartment()">Izdavanje stanova</a></li>
+                    <li><a (click)="rentsHouse()">Izdavanje kuća</a></li>
+                </ul>
+            </li>
+            <li>
+                <a (click)="sales()">Prodaja</a>
+                <ul>
+                    <li><a (click)="salesApartment()">Prodaja stanova</a></li>
+                    <li><a (click)="salesHouse()">Prodaja kuća</a></li>
+                </ul>
+            </li>
+            <li>
+                <label (click) = 'logout()'>Odjava</label>
+            </li>
+        </ul>
+    </nav>
+    <div class="profile">
+        <nav>
+            <img *ngIf = 'user.picture' [src]="user.picture" width="60px" height="60px">
+            <img *ngIf = '!user.picture' src="assets\avatar.png" width="60px" height="60px">
+            <ul class="profile">
+                <li>
+                    <a class="dropdown profileDrop">Moj profil</a>
+                    <ul>
+                        <li><label for="newPass" class="showLoginForm">Promeni šifru</label></li>
+                        <li><label class="showLoginForm" (click)='changeProfile()'>Promeni podatke</label></li>
+                        <li><label class="showLoginForm" (click)='addLot()'>Dodaj nekretninu</label></li>
+                        <li><label class="showLoginForm" (click)='myLots()'>Moje nekretnine</label></li>
+                        <li><label class="showLoginForm" (click)='zahtevi()'>Zahtevi</label></li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </nav>
+    </div> 
+    
+</header>
+
+<!-- Ako je ulogovan worker onda prikazati header ispod -->
+<header *ngIf = 'userType == 2'>
+    <h1 class='logo'>Logo</h1>
+    <nav>
+        <ul>
+            <li><a (click) = 'home()'>Home</a></li>
+            
+            <li>
+                <label (click) = 'logout()'>Odjava</label>
+            </li>
+        </ul>
+    </nav>
+    <div class="profile">
+        <nav>
+            <img *ngIf = 'user.picture' [src]="user.picture" width="60px" height="60px">
+            <img *ngIf = '!user.picture' src="assets\avatar.png" width="60px" height="60px">
+            <ul>
+                <li>
+                    <a class="dropdown profileDrop">Moj profil</a>
+                    <ul>
+                        <li><label for="newPass" class="showLoginForm">Promeni šifru</label></li>
+                        <li><label class="showLoginForm" (click)='myLots()'>Nekretnine agencije</label></li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </nav>
+    </div>
+</header>
+
+<!-- Ako je ulogovan admin onda prikazati header ispod -->
+<header *ngIf = 'userType == 3'>
+    <h1 class='logo'>Logo</h1>
+    <nav>
+        <ul>
+            <li><a (click) = 'home()'>Home</a></li>
+            
+            <li>
+                <label (click) = 'logout()'>Odjava</label>
+            </li>
+        </ul>
+    </nav>
+    <div class="profile">
+        <nav>
+            <img *ngIf = 'user.picture' [src]="user.picture" width="60px" height="60px">
+            <img *ngIf = '!user.picture' src="assets\avatar.png" width="60px" height="60px">
+            <ul class="profile">
+                
+                <li>
+                    <label class="dropdown profileDrop">Moj profil</label>
+                    <ul>
+                        <li><label for="newPass" class="showLoginForm">Promeni šifru</label></li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </nav>
+    </div>
+</header>
+
+
+
+
+<input type="checkbox" id="show">
+<input type="checkbox" id="newPass">
+
+
+<div class="overlay" for='show'></div>
+<div class="loginForm">
+    <label for="show" class="closeLogin">X</label>
+    <h2>Prijava</h2>
+    
+    <form ngNativeValidate>
+        <input type="text" placeholder="Korisnicko ime" name="username" [(ngModel)]='username' required> <br>
+        <input type="password" placeholder="Lozinka" name="password" [(ngModel)]='password' required> <br>
+        <button (click)='signIn()'>Prijavi se</button> <br>
+        <span>
+            Ako nemate nalog, registrujte se <a routerLink='register'>ovde.</a> <br>
+            {{msg}}
+        </span>
+    </form>
+</div>
+
+<div class="overlay" for='newPass'></div>
+<div class="newPassForm">
+    <label for="newPass" class="closeLogin">X</label>
+    <h2>Promena lozinke</h2>
+    
+    <form ngNativeValidate>
+        <input type="password" placeholder="Stara lozinka" name="oldPass" [(ngModel)]='oldPass' required> <br>
+        <input type="password" placeholder="Nova lozinka" name="newPass" [(ngModel)]='newPass' required> <br>
+        <input type="password" placeholder="Potvrda nove lozinke" name="newPassAgain" [(ngModel)]='newPassAgain' required> <br>
+        <button (click)='changePass()'>Promeni lozinku</button> <br>
+        <span>
+            {{msgNewPass}}
+        </span>
+    </form>
+</div>

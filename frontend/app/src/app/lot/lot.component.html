@@ -1,0 +1,208 @@
+<div class="lot" *ngIf = '!id'>
+    <div class="header"><app-header></app-header></div>
+    <app-images class="index-image"></app-images>
+        
+    <div class="lotVideo">
+        <h3>VIDEO</h3>
+        <video [src]="video" *ngIf='video' controls></video>
+        <span *ngIf='!video'>Vlasnik nije pružio video.</span>
+    </div>
+
+    <div class="desc">
+        <h3>Odabrana nekretnina</h3>
+        <table>
+            <tr>
+                <td class="text">Opis:</td>
+                <td>{{lot.description}}</td>
+            </tr>
+            <tr>
+                <td class="text">Adresa:</td>
+                <td>{{lot.city}}({{lot.district}}), {{lot.street}} br. {{lot.number}}</td>
+            </tr>
+            <tr *ngIf = 'lot.type == "stan"'>
+                <td class="text">Sprat:</td>
+                <td>Stan na {{spratStan}}. spratu u zgradi koja ima {{spratovaZgrada}} spratova</td>
+            </tr>
+            <tr *ngIf = 'lot.type == "kuca"'>
+                <td class="text">Spratova:</td>
+                <td>{{lot.floors}}</td>
+            </tr>
+            <tr>
+                <td class="text">Površina:</td>
+                <td>{{lot.sqMeters}}m<sup>2</sup> </td>
+            </tr>
+            <tr>
+                <td class="text">Broj soba:</td>
+                <td>{{lot.rooms}}</td>
+            </tr>
+            <tr>
+                <td class="text">Namešten:</td>
+                <td *ngIf='lot.equipped'>Da</td>
+                <td *ngIf='!lot.equipped'>Ne</td>
+            </tr>
+            <tr *ngIf='lot.rent'>
+                <td class="text">Cena za mesečno izdavanje:</td>
+                <td>{{lot.price}}EUR</td>
+            </tr>
+            <tr *ngIf='!lot.rent'>
+                <td class="text">Cena za kupovinu:</td>
+                <td>{{lot.price}}EUR</td>
+            </tr>
+            <tr>
+                <td class="text">Vlasnik:</td>
+                <td>{{lot.owner}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="rent" *ngIf = 'lot.rent'>
+        <h3>Najam:</h3>
+        <table>
+            <tr>
+                <td class="text">Datum od: </td>
+                <td><input type="date" [(ngModel)]='startDate' class="datum"></td>
+            </tr>
+            <tr>
+                <td class="text">Datum do: </td>
+                <td><input type="date" [(ngModel)]='endDate' class="datum"></td>
+            </tr>
+            <tr>
+                <td class="text">Predlog cene: </td>
+                <td><input type="number" [(ngModel)]='totalPrice'>EUR</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button (click)='send()'>POŠALJI ZAHTEV</button>
+                </td>
+            </tr>
+        </table> 
+         {{msg}}.  
+    </div>
+
+    <div class="sell" *ngIf = '!lot.rent'>
+        <h3>Prodaja:</h3>
+
+        <table>
+            <tr>
+                <td class="text">Predlog cene: </td>
+                <td><input type="number" [(ngModel)]='price'>EUR</td>
+            </tr>
+            <tr>
+                <td class="text">Način plaćanja: </td>
+                <td><input type="radio" name="nacinPlacanja" id="gotovina" [value]="false" [(ngModel)]='loan'> <label for="gotovina">Gotovina</label>  
+                    <input type="radio" name="nacinPlacanja" id="kredit" [value]="true" [(ngModel)]='loan'><label for="kredit">Kredit</label></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button (click)='buy()'>POŠALJI ZAHTEV</button>
+                </td>
+            </tr>
+        </table>
+         {{buyMsg}}
+    </div>
+    
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>
+
+
+
+<div class="lot" *ngIf = 'id'>
+    <div class="header"><app-header></app-header></div>
+    <app-images class="index-image"></app-images>
+        
+
+    <div class="lotVideo">
+        <h3>VIDEO</h3>
+        <video [src]="video" *ngIf='video' controls></video>
+        <span *ngIf='!video'>Vlasnik nije pružio video.</span>
+    </div>
+
+    <div class="desc">
+        <h3 *ngIf = 'lot && lot.approved'>Moja nekretnina</h3>
+        <h3 *ngIf = 'lot && !lot.approved'>Moja nekretnina <span>(Čeka se potvrda agenta)</span></h3>
+        <form>
+            <table *ngIf='lot'>
+                <tr>
+                    <td class="text">Opis:</td>
+                    <td><textarea name="desc" cols="60" rows="3" [(ngModel)]='lot.description'></textarea></td>
+                </tr>
+                <tr>
+                    <td class="text">Grad:</td>
+                    <td><input type="text" class="edit" placeholder="Grad" name="grad" required [(ngModel)]='lot.city' ></td>
+                </tr>
+                <tr>
+                    <td class="text">Opština:</td>
+                    <td><input type="text" class="edit" placeholder="Opština" name="Opština" required [(ngModel)]='lot.district' ></td>
+                </tr>
+                <tr>
+                    <td class="text">Ulica:</td>
+                    <td><input type="text" class="edit" placeholder="Ulica" name="Ulica" required [(ngModel)]='lot.street' ></td>
+                </tr>
+                <tr>
+                    <td class="text">Broj:</td>
+                    <td><input type="text" class="edit" placeholder="Broj" name="Broj" required [(ngModel)]='lot.number' ></td>
+                </tr>
+                <tr>
+                    <td class="text">Tip:</td>
+                    <td><select [(ngModel)]='lot.type' class="edit" name="tip">
+                        <option value="stan">Stan</option>
+                        <option value="kuca">Kuća</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="text">Sprat(broj spratova ako je kuća):</td>
+                    <td><input type="text" class="edit" placeholder="Sprat" name="Sprat" required [(ngModel)]='spratStan'></td>
+                </tr>
+                <tr *ngIf = 'lot.type == "stan"'>
+                    <td class="text">Broj spratova u zgradi:</td>
+                    <td><input type="text" class="edit" placeholder="Broj spratova u zgradi" name="brSpratova" required [(ngModel)]='spratovaZgrada'></td>
+                </tr>
+                <tr>
+                    <td class="text">Površina:</td>
+                    <td><input type="text" class="edit" placeholder="Površina" name="Povrsina" required [(ngModel)]='lot.sqMeters'></td>
+                </tr>
+                <tr>
+                    <td class="text">Broj soba:</td>
+                    <td><input type="number" class="edit" placeholder="Broj soba" name="BrojSoba" required [(ngModel)]='lot.rooms'></td>
+                </tr>
+                <tr>
+                    <td class="text">Namešten:</td>
+                    <td><select [(ngModel)]='lot.equipped' class="edit" name="namesten">
+                        <option [value]="true">Da</option>
+                        <option [value]="false">Ne</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="text">Iznajmljivanje ili prodaja:</td>
+                    <td><select [(ngModel)]='lot.rent' class="edit" name="rent">
+                        <option value="true">Iznajmljivanje</option>
+                        <option value="false">Prodaja</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="text">Cena:</td>
+                    <td><input type="number" class="edit" placeholder="Cena" name="Cena" required [(ngModel)]='lot.price'></td>
+                </tr>
+                <tr>
+                    <td class="text">Slike:</td>
+                    <td><input type="file"  (change)='fileSelected($event)' accept=".jpg, .jpeg, .png" multiple></td>
+                </tr>
+                <tr>
+                    <td class="text">Video:</td>
+                    <td><input type="file"  (change)='fileSelectedVideo($event)' accept=".mp4, .mkv, .avi"></td>
+                </tr>
+                <tr>
+                    <td><button (click)='back()'>Nazad</button></td>
+                    <td><button (click)='update()'>Ažuriraj nekretninu</button></td>
+                </tr>
+            </table>
+        </form>
+        {{msg}}
+    </div>
+    
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>

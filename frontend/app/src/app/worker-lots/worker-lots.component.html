@@ -1,0 +1,100 @@
+<div class="registracije">
+    <div class="header"><app-header></app-header></div>
+
+    <div class="noveRegistracije" *ngIf = "!(type == 3)">
+        <div *ngFor='let l of allLots' class="lot">
+            <div class="lotImage" id="{{l.id}}">{{getImage(l)}}</div>
+            <table>
+                <tr>
+                    <td>Tip:</td>
+                    <td>{{l.type}} <span *ngIf='l.rent'> na izdavanje</span><span *ngIf='!l.rent'> na prodaju</span></td>
+                </tr>
+                <tr>
+                    <td>Broj soba:</td>
+                    <td>{{l.rooms}}</td>
+                </tr>
+                <tr>
+                    <td>Kvadratura:</td>
+                    <td>{{l.sqMeters}}m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td>{{l.city}}({{l.district}}), {{l.street}} br. {{l.number}}</td>
+                </tr>
+                <tr>
+                    <td>Sprat:</td>
+                    <td *ngIf='l.type == "stan"'>Stan na {{getFloorApartment(l)}}. spratu zgrade sa {{getFloorsBuilding(l)}} spratova</td>
+                    <td *ngIf='l.type == "kuca"'>Kuća sa {{l.floors}} sprata/spratova</td>
+                </tr>
+                <tr>
+                    <td>Namešten:</td>
+                    <td *ngIf='l.equipped'>Da</td>
+                    <td *ngIf='!l.equipped'>Ne</td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td>{{l.price}}EUR</td>
+                </tr>
+                <tr>
+                    <td>Vlasnik:</td>
+                    <td>{{l.owner}}</td>
+                </tr>
+                <tr *ngIf = "(ruter.url == '/worker/newLots') || (ruter.url == '/admin/newLots')">
+                    <td><button (click)='odbij(l)'>Odbij</button></td>
+                    <td><button (click)='prihvati(l)'>Prihvati</button></td>
+                    
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="noveRegistracije" *ngIf = '!allLots || allLots.length == 0'>Nema novih nekretnina.</div>
+
+
+    
+    <div class="noveRegistracije" *ngIf = "type == 3">
+        <div *ngFor='let l of allLots' (click)='promote(l)' class="lotForPromotion" [class.notPromoted]="!l.promoted" [class.promoted]="l.promoted">
+            <div class="lotImage" id="{{l.id}}">{{getImage(l)}}</div>
+            <table>
+                <tr>
+                    <td>Tip:</td>
+                    <td>{{l.type}} <span *ngIf='l.rent'> na izdavanje</span><span *ngIf='!l.rent'> na prodaju</span></td>
+                </tr>
+                <tr>
+                    <td>Broj soba:</td>
+                    <td>{{l.rooms}}</td>
+                </tr>
+                <tr>
+                    <td>Kvadratura:</td>
+                    <td>{{l.sqMeters}}m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td>{{l.city}}({{l.district}}), {{l.street}} br. {{l.number}}</td>
+                </tr>
+                <tr>
+                    <td>Sprat:</td>
+                    <td *ngIf='l.type == "stan"'>Stan na {{getFloorApartment(l)}}. spratu zgrade sa {{getFloorsBuilding(l)}} spratova</td>
+                    <td *ngIf='l.type == "kuca"'>Kuća sa {{l.floors}} sprata/spratova</td>
+                </tr>
+                <tr>
+                    <td>Namešten:</td>
+                    <td *ngIf='l.equipped'>Da</td>
+                    <td *ngIf='!l.equipped'>Ne</td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td>{{l.price}}EUR</td>
+                </tr>
+                <tr>
+                    <td>Vlasnik:</td>
+                    <td>{{l.owner}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="noveRegistracije" *ngIf = '!allLots || allLots.length == 0'>Nema novih nekretnina.</div>
+
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>

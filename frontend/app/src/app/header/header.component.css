@@ -1,0 +1,304 @@
+header {
+    
+    background-color: rgba(252, 89, 86, 1);
+    /* position: fixed; */
+    /* z-index: 500; */
+    /* text-align: center; */
+    font-weight: 600;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr auto minmax(600px, 3fr) 1fr 1fr 1fr;
+    /* grid-row: 1/span 1; */
+    /* grid-area: header; */
+}
+
+#profileImg {
+    min-height: 60px;
+    min-width: 60px;
+    background: chartreuse;
+    /* transform: translateX(40px); */
+    /* margin: 0 5px; */
+    /* flex: 0 0 1; */
+    /* justify-self: flex-end; */
+}
+
+.profileDrop {
+    display: block !important;
+    width: 9em !important;
+}
+
+.logo{
+    grid-column: 2 / span 1;
+}
+
+nav {
+    grid-column: 3/4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header:hover .dropdown {
+    display: block;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    
+}
+
+nav ul li {
+    margin-bottom: 0;
+    margin-left: 5em;
+    height: 100%;
+    /* display: flex; */
+}
+
+nav a {
+    color: rgba(248, 248, 248, .85);
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+}
+
+nav label {
+    color: rgba(248, 248, 248, .85);
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    position: relative;
+}
+
+nav ul ul a {
+    color: rgba(248, 248, 248, .85);
+    text-decoration: none;
+    /* font-size: .9rem; */
+    text-transform: uppercase;
+    position: relative;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    text-align: left;
+    background: rgba(252, 89, 86, 1);
+    mix-blend-mode: none;
+    z-index: 500;
+}
+nav ul ul li {
+    position: relative;
+    margin-left: 0;
+    margin-right: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+nav a:hover {
+    color: rgba(28, 27, 32, .85);
+}
+
+nav label:hover {
+    color: rgba(28, 27, 32, .85);
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul ul a:hover {
+    color: rgba(28, 27, 32, .85);
+}
+
+
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: rgba(28, 27, 32, .85);
+    position: absolute;
+    top: -0.6em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform ease-in-out 250ms;
+}
+
+nav a:hover::before {
+    transform: scale(1, 1);
+}
+
+nav label::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: rgba(28, 27, 32, .85);
+    position: absolute;
+    top: -0.6em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform ease-in-out 250ms;
+}
+
+nav label:hover::before {
+    transform: scale(1, 1);
+}
+
+nav ul ul a::before {
+    all: unset;
+}
+
+/*LOGIN*/
+
+.loginPopup {
+    display: none;
+}
+
+#show{
+    display: none;
+}
+
+#show:checked ~ .loginForm {
+    display: block;
+}
+
+#show:checked ~ .overlay {
+    display: block;
+}
+
+/*LOGIN CSS*/
+
+.loginForm {
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 200;
+    background:rgba(252, 89, 86, 1);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+    color: rgba(28, 27, 32, 1);
+    padding: 3em;
+    font-size: 1.2rem;
+}
+
+.newPassForm {
+    display: none;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 200;
+    background:rgba(252, 89, 86, 1);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+    color: rgba(28, 27, 32, 1);
+    padding: 3em;
+    font-size: 1.2rem;
+}
+
+.loginForm h2, .newPassForm h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.loginForm input, .newPassForm input {
+    margin-bottom: 1em;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0;
+}
+
+.loginForm button, .newPassForm button {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 100%;
+    height: 2.5em;
+    background: rgba(248, 248, 248, 1);
+    border-color: rgba(28, 27, 32, 1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.loginForm span, .newPassForm span {
+    font-size: 1rem;
+}
+
+.loginForm a, .newPassForm a {
+    text-decoration: none;
+    
+    color: rgba(248, 248, 248, 1);
+}
+
+.loginForm a:hover, .newPassForm a:hover {
+    text-decoration: underline;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* width: 100%; */
+    /* height: 100%; */
+    z-index: 150;
+    background: rgba(0,0,0,0.6);
+}
+
+.closeLogin {
+    position: absolute;
+    right: 1rem;
+    top: .3rem;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+.closeLogin:hover {
+    color: rgba(248, 248, 248, 1);
+}
+
+
+/*MOJ PROFIL CSS*/
+
+.profile {
+    grid-column: 5/span 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile .dropdown {
+    cursor: default;
+    /* pointer-events: none; */
+}
+
+.profile nav ul ul label::before {
+    all: unset;
+}
+
+#newPass{
+    display: none;
+}
+
+#newPass:checked ~ .newPassForm {
+    display: block;
+}
+
+#newPass:checked ~ .overlay {
+    display: block;
+}
+
+#newPass:checked ~ body {
+    overflow: hidden;
+}

@@ -1,0 +1,144 @@
+.search {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+    "search result"
+}
+
+/*------------- CSS za formu za brzu pretragu nekretnina ---------------*/
+
+
+.homeSearchForm {
+    /* grid-column: 1/span 1; */
+    grid-area: search;
+    background: rgba(248, 248, 248, .85);
+    border: 4px solid rgba(252, 89, 86, 1);
+    border-bottom: none;
+    
+}
+
+.searchResult {
+    grid-area: result;
+    border: 4px solid rgba(252, 89, 86, 1);
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+.homeSearchForm form {
+    display: flex;
+    /* height: 500px; */
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: space-around; */
+}
+
+.homeSearchForm form div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.homeSearchForm input {
+    font-size: 1.5em;
+    width: 70%;
+    align-self: center;
+    padding: 0;
+    border-width: 1;
+    margin-top: 1em;
+}
+
+.homeSearchForm select {
+    font-size: 1.5em;
+    width: 70%;
+    align-self: center;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.homeSearchForm button {
+    font-size: 1.5em;
+    margin-top: 1em;
+    width: 100%;
+    height: 2em;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: none;
+    cursor: pointer;
+    
+}
+
+.homeSearchForm button:hover {
+    background: rgba(252, 89, 86, .8);
+}
+.homeSearchForm h2 {
+    margin-top: 0;
+    margin-bottom: .8em;
+    text-align: center;
+    /* color: rgba(248, 248, 248, 1); */
+}
+.homeSearchForm span {
+    text-align: center;
+    color: rgba(252, 89, 86, 1);
+}
+
+
+
+/*CSS ZA REZULTATE PRETRAGE*/
+
+.searchResult {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    /* box-sizing: border-box; */
+    overflow: auto;
+    /* min-height: 72vh; */
+}
+
+.searchResult .lot {
+    background: rgba(252, 89, 86, 1);
+    min-width: 31%;
+    max-width: 30%;
+    margin: 0.5rem;
+    border-radius: 15px;
+    /* border: 5px solid rgba(252, 89, 86, 1); */
+    box-shadow: 3px 3px 8px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "img list";
+}
+
+.searchResult div table {
+    /* margin-left: 0.5rem; */
+    width: 100%;
+    grid-area: list;
+    border-left: 4px solid rgba(248, 248, 248, 1);
+    margin-left: 5px;
+    color: rgba(28, 27, 32, 1);
+}
+
+.searchResult .loggedIn {
+    background: rgba(252, 89, 86, 1);
+    cursor: pointer;
+    margin: 0.5rem;
+    border-radius: 15px;
+    box-shadow: 3px 3px 8px;
+    /* border: 5px solid rgba(252, 89, 86, 1); */
+}
+
+.searchResult .loggedIn:hover {
+    background: rgba(252, 89, 86, 0.8);
+}
+
+.lotImage{
+    grid-area: img;
+    /* margin-left: .3em; */
+    background: green;
+    background-size: cover;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}

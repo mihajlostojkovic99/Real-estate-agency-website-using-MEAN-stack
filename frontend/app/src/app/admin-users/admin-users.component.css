@@ -1,0 +1,126 @@
+
+.adminUsers{
+    display: grid;
+    min-height: 100%;
+    position:relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em 35% auto 15%;
+    grid-template-areas: 
+    "header"
+    "allUsers"
+    "newUser"
+    "footer"
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+.header {
+    grid-area: header;
+}
+
+.allUsers {
+    grid-area: allUsers;
+    min-height: 32vh;
+    margin-top: 1rem;
+    font-size: 1.1em;
+}
+
+.allUsers table {
+    width: 100%;
+}
+
+.allUsers table, .allUsers th, .allUsers td {
+    border: 2px solid rgba(28, 27, 32, 1);
+    border-collapse: collapse;
+}
+
+.allUsers th {
+    background: rgba(252, 89, 86, 1);
+    color: rgba(248, 248, 248, 1);
+}
+
+.allUsers input {
+    /* width: 95%; */
+    /* padding: 0; */
+    font-size: 1em;
+    color: rgba(252, 89, 86, 1);
+    /* margin-bottom: .5em; */
+    border-radius: 6px;
+}
+
+.image {
+    text-align: center;
+}
+
+.allUsers button {
+    margin: 0;
+    padding: 0;
+    min-width: 6em;
+    width: 100%;
+    height: 4.3em;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: none;
+    cursor: pointer;
+    color: rgba(28, 27, 32, 1);
+    /* border-radius: 15px; */
+}
+
+.allUsers button:hover {
+    background: rgba(252, 89, 86, .8);
+    
+}
+
+/*FORMA ZA DODAVANJE KORISNIKA*/
+
+.newUser{
+    grid-area: newUser;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 100%; */
+    /* background: rgba(252, 89, 86, 1); iz nekog razloga div ne ide do dna stranice????*/
+    /* height: 72vh; */
+}
+
+.newUser form {
+    text-align: right;
+    
+    font-size: 1.2em;
+    
+}
+
+.newUser form table td {
+    vertical-align: top;
+}
+
+.newUser input {
+    width: 100%;
+    padding: 0;
+    font-size: 1.1em;
+    margin-bottom: .5em;
+    border-radius: 6px;
+}
+
+.newUser button {
+    margin-top: 1em;
+    width: 100%;
+    height: 2em;
+    font-size: 1.5em;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: none;
+    cursor: pointer;
+    color: rgba(28, 27, 32, 1);
+    border-radius: 15px;
+}
+
+.newUser button:hover {
+    background: rgba(252, 89, 86, .8);
+    
+}

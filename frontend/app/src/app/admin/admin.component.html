@@ -1,0 +1,39 @@
+<div class="admin">
+    <div class="header"><app-header></app-header></div>
+
+    <div class="korisnici">
+        <button routerLink = 'admin-users'>KORISNICI</button>
+    </div>
+
+    <div class="registracije">
+        <button routerLink='admin-registracije'>ZAHTEVI ZA REGISTRACIJOM</button>
+    </div>
+
+    <div class="novenekr">
+        <button routerLink='newLots'>NOVE NEKRETNINE</button>
+    </div>
+
+    <div class="dodajnekr">
+        <button routerLink='addLot'>DODAJ NEKRETNINU</button>
+    </div>
+
+    <div class="prodajeiprihod">
+        <button routerLink='contracts'>UGOVORENE PRODAJE I PRIHOD</button>
+    </div>
+
+    <div class="procenat">
+        <button routerLink='percents'>PROCENTI ZA POSREDOVANJE</button>
+    </div>
+
+    <div class="grafikoni">
+        <div class="chart brNekretnina"><canvas id="brNekretnina" ></canvas></div>
+        <div class="chart stanovi"><canvas id="stanovi" ></canvas></div>
+        <div class="rangovi"><canvas id="rangovi" ></canvas></div>
+    </div>
+
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+
+
+</div>

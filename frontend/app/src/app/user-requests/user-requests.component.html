@@ -1,0 +1,146 @@
+<div class="userRequests">
+    <div class="header"><app-header></app-header></div>
+
+    <div class="allRentRequests" *ngIf ='type == 1'>
+        <h3>ZAHTEVI ZA IZNAJMLJIVANJE</h3>
+        <table *ngIf = 'rentRequests && rentRequests.length != 0'>
+            <tr>
+                <th>TIP</th>
+                <th>ADRESA</th>
+                <th>SPRAT</th>
+                <th>CENA</th>
+                <th>PONUDA</th>
+                <th>VLASNIK</th>
+                <th>PONUĐAČ</th>
+                <th>DATUM OD</th>
+                <th>DATUM DO</th>
+                <th>PRIHVATI</th>
+                <th>ODBIJ</th>
+            </tr>
+            <tr *ngFor = 'let r of rentRequests'>
+                <td>{{lotType(r.lotID)}}</td>
+                <td>{{lotAdress(r.lotID)}}</td>
+                <td>{{lotFloor(r.lotID)}}</td>
+                <td>{{lotPrice(r.lotID)}}EUR</td>
+                <td>{{r.totalPrice}}EUR</td>
+                <td>{{lotOwner(r.lotID)}}</td>
+                <td>{{r.proposer}}</td>
+                <td>{{r.startDate}}</td>
+                <td>{{r.endDate}}</td>
+                <td *ngIf = 'r.ownerApproved && !r.approved' colspan="2"> <span>ČEKA SE POTVRDA AGENCIJE</span></td>
+                <td *ngIf = 'r.approved' colspan="2"><span>ZAHTEV JE POTVRĐEN</span> </td>
+                <td *ngIf = '!r.ownerApproved' (click) = 'prihvati(r.id)'><button>PRIHVATI</button></td>
+                <td *ngIf = '!r.ownerApproved' (click) = 'odbij(r.id)'><button>ODBIJ</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="allBuyRequests" *ngIf ='type == 1'>
+        <h3>ZAHTEVI ZA PRODAJU</h3>
+        <table *ngIf = 'buyRequests && buyRequests.length != 0'>
+            <tr>
+                <th>TIP</th>
+                <th>ADRESA</th>
+                <th>SPRAT</th>
+                <th>CENA</th>
+                <th>PONUDA</th>
+                <th>VLASNIK</th>
+                <th>PONUĐAČ</th>
+                <th>PRIHVATI</th>
+                <th>ODBIJ</th>
+            </tr>
+            <tr *ngFor = 'let r of buyRequests'>
+                <td>{{lotType(r.lotID)}}</td>
+                <td>{{lotAdress(r.lotID)}}</td>
+                <td>{{lotFloor(r.lotID)}}</td>
+                <td>{{lotPrice(r.lotID)}}EUR</td>
+                <td>{{r.price}}EUR</td>
+                <td>{{lotOwner(r.lotID)}}</td>
+                <td>{{r.proposer}}</td>
+                <td *ngIf = 'r.ownerApproved && !r.approved' colspan="2"><span>ČEKA SE POTVRDA AGENCIJE</span></td>
+                <td *ngIf = 'r.approved' colspan="2"><span>ZAHTEV JE POTVRĐEN</span></td>
+                <td *ngIf = '!r.ownerApproved' (click) = 'prihvatiBuy(r.id)'><button>PRIHVATI</button></td>
+                <td *ngIf = '!r.ownerApproved' (click) = 'odbijBuy(r.id)'><button>ODBIJ</button></td>
+            </tr>
+        </table>
+    </div>
+       
+    
+
+
+
+
+    <div class="allRentRequests" *ngIf ='type == 2'>
+        <h3>ZAHTEVI ZA IZNAJMLJIVANJE</h3>
+        <table *ngIf = 'rentRequests && rentRequests.length != 0'>
+            <tr>
+                <th>TIP</th>
+                <th>ADRESA</th>
+                <th>SPRAT</th>
+                <th>CENA</th>
+                <th>PONUDA</th>
+                <th>VLASNIK</th>
+                <th>PONUĐAČ</th>
+                <th>DATUM OD</th>
+                <th>DATUM DO</th>
+                <th>PRIHVATI</th>
+                <th>ODBIJ</th>
+            </tr>
+            <tr *ngFor = 'let r of rentRequests'>
+                <td>{{lotType(r.lotID)}}</td>
+                <td>{{lotAdress(r.lotID)}}</td>
+                <td>{{lotFloor(r.lotID)}}</td>
+                <td>{{lotPrice(r.lotID)}}EUR</td>
+                <td>{{r.totalPrice}}EUR</td>
+                <td>{{lotOwner(r.lotID)}}</td>
+                <td>{{r.proposer}}</td>
+                <td>{{r.startDate}}</td>
+                <td>{{r.endDate}}</td>
+                <!-- <td *ngIf = 'r.approved' colspan="2">ČEKA SE POTVRDA AGENCIJE</td> -->
+                <td (click) = 'prihvatiAgent(r.id)'><button>PRIHVATI</button></td>
+                <td (click) = 'odbijAgent(r.id)'><button>ODBIJ</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="allBuyRequests" *ngIf ='type == 2'>
+        <h3>ZAHTEVI ZA PRODAJU</h3>
+        <table *ngIf = 'buyRequests && buyRequests.length != 0'>
+            <tr>
+                <th>TIP</th>
+                <th>ADRESA</th>
+                <th>SPRAT</th>
+                <th>CENA</th>
+                <th>PONUDA</th>
+                <th>VLASNIK</th>
+                <th>PONUĐAČ</th>
+                <th>PRIHVATI</th>
+                <th>ODBIJ</th>
+            </tr>
+            <tr *ngFor = 'let r of buyRequests'>
+                <td>{{lotType(r.lotID)}}</td>
+                <td>{{lotAdress(r.lotID)}}</td>
+                <td>{{lotFloor(r.lotID)}}</td>
+                <td>{{lotPrice(r.lotID)}}EUR</td>
+                <td>{{r.price}}EUR</td>
+                <td>{{lotOwner(r.lotID)}}</td>
+                <td>{{r.proposer}}</td>
+                <!-- <td *ngIf = 'r.ownerApproved' colspan="2">ČEKA SE POTVRDA AGENCIJE</td> -->
+                <td (click) = 'prihvatiBuyAgent(r.id)'><button>PRIHVATI</button></td>
+                <td (click) = 'odbijBuyAgent(r.id)'><button>ODBIJ</button></td>
+            </tr>
+        </table>
+    </div>
+        
+    
+
+
+
+
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>
+
+
+

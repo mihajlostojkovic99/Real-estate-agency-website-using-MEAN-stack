@@ -1,0 +1,104 @@
+
+.myLots {
+    display: grid;
+    min-height: 100%;
+    position:relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em auto 15%;
+    grid-template-areas: 
+    "header"
+    "registracije"
+    "footer"
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+.header {
+    grid-area: header;
+    max-height: max-content;
+}
+
+.lots {
+    grid-area: registracije;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    /* box-sizing: border-box; */
+    overflow: auto;
+    min-height: 72vh;
+}
+
+.lots div table {
+    margin-left: 5px;
+    width: 100%;
+    border-left: 4px solid rgba(248, 248, 248, 1);
+}
+
+.lots div table button {
+    font-size: 1em;
+    width: 100%;
+    height: 3em;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: 3px solid rgba(248, 248, 248, 1);
+    border-radius: 15px;
+    cursor: pointer;
+    color: rgba(248, 248, 248, 1);
+}
+
+.lots div table button:hover {
+    border-color: rgba(28, 27, 32, 1);
+    color: rgba(28, 27, 32, 1);
+}
+
+.lots .lot {
+    background: rgba(252, 89, 86, 1);
+    min-width: 31%;
+    max-width: 30%;
+    margin: 0.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "img list";
+    border: 3px solid transparent;
+}
+
+.lots .notApproved {
+    background: rgba(252, 89, 86, 1);
+    min-width: 31%;
+    max-width: 30%;
+    margin: 0.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "img list";
+    border: 3px solid rgba(28, 27, 32, 1);
+}
+
+.lots .lot:hover{
+    background: rgba(252, 89, 86, 0.8);
+}
+
+.lots .notApproved:hover {
+    background: rgba(252, 89, 86, 0.8);
+}
+
+.lotImage{
+    grid-area: img;
+    background: green;
+    background-size: cover;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}

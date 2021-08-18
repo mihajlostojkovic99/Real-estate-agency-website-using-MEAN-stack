@@ -1,0 +1,66 @@
+
+.registracije {
+    display: grid;
+    min-height: 100%;
+    position:relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em auto 15%;
+    grid-template-areas: 
+    "header"
+    "registracije"
+    "footer"
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+.header {
+    grid-area: header;
+    max-height: max-content;
+}
+
+.noveRegistracije {
+    grid-area: registracije;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    /* box-sizing: border-box; */
+    overflow: auto;
+    min-height: 72vh;
+}
+
+.noveRegistracije div {
+    background: rgba(252, 89, 86, 1);
+    min-width: 23%;
+    max-width: 23%;
+    margin: 0.5rem;
+    border-radius: 15px;
+    border: 5px solid rgba(252, 89, 86, 1);
+    box-shadow: 3px 3px 8px;
+
+}
+
+.noveRegistracije div table {
+    /* margin-left: 0.3rem; */
+    width: 100%;
+}
+
+.noveRegistracije div table button {
+    font-size: 1em;
+    width: 100%;
+    height: 3em;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: 3px solid rgba(248, 248, 248, 1);
+    border-radius: 15px;
+    cursor: pointer;
+    color: rgba(248, 248, 248, 1);
+}
+
+.noveRegistracije div table button:hover {
+    border-color: rgba(28, 27, 32, 1);
+    color: rgba(28, 27, 32, 1);
+}

@@ -1,0 +1,35 @@
+<div class="registracije">
+    <div class="header"><app-header></app-header></div>
+
+    <div class="noveRegistracije">
+        <div *ngFor='let registration of registrations'>
+            <table>
+                <tr>
+                    <td>Ime i prezime:</td>
+                    <td>{{registration.name}} {{registration.surname}}</td>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td>{{registration.username}}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{registration.email}}</td>
+                </tr>
+                <tr>
+                    <td>Grad i država:</td>
+                    <td>{{registration.city}}, {{registration.country}}</td>
+                </tr>
+                <tr>
+                    <td><button (click)='prihvati(registration.username)'>Prihvati</button></td>
+                    <td><button (click)='odbij(registration.username)'>Odbij</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="noveRegistracije" *ngIf = '!registrations || registrations.length == 0'>Nema novih registracija.</div>
+
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>

@@ -1,0 +1,110 @@
+
+:root {
+    --accent-color: rgba(252, 89, 86, 1);
+    --light-grey: rgba(248, 248, 248, 1);
+    --almost-black: rgba(28, 27, 32, 1);
+}
+
+.lot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto 15%;
+    grid-template-areas: 
+    "header header"
+    "img img"
+    "desc lotVideo"
+    "input input"
+    "footer footer"
+}
+
+.desc {
+grid-area: desc;
+}
+
+.lotVideo{
+    grid-area: lotVideo;
+    width: 100%;
+}
+
+video{
+    width: 100%;
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+.header {
+    grid-area: header;
+    max-height: max-content;
+}
+
+.index-image {
+    grid-area: img;
+    height: 50rem;
+    /* background-image: url('https://source.unsplash.com/random/1270x800'); */
+    background-size: cover;
+}
+
+.text {
+    color: gray;
+    font-weight: 600;
+    padding-right: 4rem;
+    padding-bottom: .3rem;
+    border-right: 3px solid rgba(252, 89, 86, 1);
+}
+
+h3 {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+h3 span{
+    color: rgba(252, 89, 86, 1);
+}
+
+table, tr, td {
+    font-weight: 600;
+    font-size: 1.3rem;
+    width: fit-content;
+}
+
+input, select {
+    font-size: 1.3rem;
+    margin-left: 0.2rem;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.datum {
+    width: 100%;
+}
+
+.edit {
+    width: 100%;
+}
+
+.rent, .sell {
+    grid-area: input;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 3.3em;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: none;
+    cursor: pointer;
+    color: rgba(28, 27, 32, 1);
+}
+
+button:hover {
+    background: rgba(252, 89, 86, .8);
+    
+}

@@ -1,0 +1,94 @@
+<div class="adminUsers">
+    <div class="header"><app-header></app-header></div>
+
+    <div class="allUsers">
+        <table>
+            <tr>
+                <th>Profilna slika</th>
+                <th>Username</th>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Email</th>
+                <th>Lozinka</th>
+                <th>Grad</th>
+                <th>Država</th>
+                <th>Tip</th>
+                <th>Izmeni</th>
+                <th>Obrisi</th>
+            </tr>
+            <tr *ngFor = 'let u of allUsers'>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)] && u.picture' class="image"><img src="{{u.picture}}" width="60px" height="60px"></td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]&& !u.picture' class="image"><img src="assets\avatar.png" width="60px" height="60px"></td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.username}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.name}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.surname}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.email}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.password}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.city}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.country}}</td>
+                <td *ngIf = '!editFlag[allUsers.indexOf(u)]'>{{u.type}}</td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="file"  (change)='fileSelected($event)' accept=".jpg, .jpeg, .png" ></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'username'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'name'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'surname'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'email'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'password'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'city'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'country'></td>
+                <td *ngIf = 'editFlag[allUsers.indexOf(u)]'><input type="text" [(ngModel)] = 'type'></td>
+                <td><button (click) = 'edit(u)'>IZMENI</button></td>
+                <td><button (click)='delete(u)'>OBRISI</button></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="newUser">
+        <form>
+            <table>
+                <tr>
+                    <td>Ime:</td>
+                    <td><input type="text" placeholder="Ime" name="name" [(ngModel)]='newName' required></td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td><input type="text" placeholder="Prezime" name="surname" required [(ngModel)]='newSurname' ></td>
+                </tr>
+                <tr>
+                    <td>Korisnicko ime:</td>
+                    <td><input type="text" placeholder="Korisnicko ime" name="username" required [(ngModel)]='newUsername' ></td>
+                </tr>
+                <tr>
+                    <td>Lozinka:</td>
+                    <td><input type="password" placeholder="Lozinka" name="password" required [(ngModel)]='newPassword' ></td>
+                </tr>
+                <tr>
+                    <td>Profilna slika:</td>
+                    <input type="file"  (change)='fileSelected($event)' accept=".jpg, .jpeg, .png" >
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" placeholder="Email" name="email" required [(ngModel)]='newEmail'></td>
+                </tr>
+                <tr>
+                    <td>Grad:</td>
+                    <td><input type="text" placeholder="Grad" name="city" required [(ngModel)]='newCity'></td>
+                </tr>
+                <tr>
+                    <td>Drzava:</td>
+                    <td><input type="text" placeholder="Drzava" name="country" required [(ngModel)]='newCountry'></td>
+                </tr>
+            </table>
+            <button (click)='addUser()'>DODAJ KORISNIKA</button>
+            <img [src]="newPicture" width="150px" >
+            
+        </form>
+    </div>
+
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>
+
+
+

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.register {
+    display: grid;
+    /* height: 100vh; */
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "register"
+    "footer"
+}
+
+.header {
+    grid-area: header;
+    max-height: max-content;
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+/*-------- CSS za formu za registraciju --------*/
+
+.registerForm{
+    grid-area: register;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 100%; */
+    /* background: rgba(252, 89, 86, 1); iz nekog razloga div ne ide do dna stranice????*/
+    height: 72vh;
+}
+
+.registerForm form {
+    text-align: right;
+    
+    font-size: 1.2em;
+    
+}
+
+.registerForm form table td {
+    vertical-align: top;
+}
+
+.registerForm input {
+    width: 100%;
+    padding: 0;
+    font-size: 1.1em;
+    margin-bottom: .5em;
+    border-radius: 6px;
+}
+
+.registerForm button {
+    margin-top: 1em;
+    width: 100%;
+    height: 2em;
+    font-size: 1.5em;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: none;
+    cursor: pointer;
+    color: rgba(28, 27, 32, 1);
+    border-radius: 15px;
+}
+
+.registerForm button:hover {
+    background: rgba(252, 89, 86, .8);
+    
+}

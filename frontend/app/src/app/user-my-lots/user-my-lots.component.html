@@ -1,0 +1,38 @@
+<div class="myLots">
+    <div class="header"><app-header></app-header></div>
+
+    <div class="lots">
+        <div *ngFor='let l of lots' routerLink = '{{l.id}}' [class.lot]="l.approved" [class.notApproved]="!l.approved">
+            <div class="lotImage" id="{{l.id}}">{{getImage(l)}}</div>
+            <!-- <img src="{{l.images[0]}}" class="lotImage"> -->
+            <table>
+                <tr>
+                    <td>Tip:</td>
+                    <td>{{l.type}} <span *ngIf='l.rent'> na izdavanje</span><span *ngIf='!l.rent'> na prodaju</span></td>
+                </tr>
+                <tr>
+                    <td>Broj soba:</td>
+                    <td>{{l.rooms}}</td>
+                </tr>
+                <tr>
+                    <td>Kvadratura:</td>
+                    <td>{{l.sqMeters}}m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>Ulica:</td>
+                    <td>{{l.street}}</td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td>{{l.price}}EUR</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="lots" *ngIf = '!lots || lots.length == 0'>Nemate dodatih nekretnina.</div>
+
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>
+

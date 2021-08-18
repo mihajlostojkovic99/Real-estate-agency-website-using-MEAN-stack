@@ -1,0 +1,60 @@
+<div class="register">
+    <div class="header"><app-header></app-header></div>
+    <div class="registerForm">
+        <h2>Registracija</h2>
+        <form ngNoForm>
+            <table>
+                <tr>
+                    <td>Ime:</td>
+                    <td><input type="text" placeholder="Ime" name="name" [(ngModel)]='name' required></td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td><input type="text" placeholder="Prezime" name="surname" required [(ngModel)]='surname' ></td>
+                </tr>
+                <tr *ngIf = '!updateUser'>
+                    <td >Korisnicko ime:</td>
+                    <td><input type="text" placeholder="Korisnicko ime" name="username" required [(ngModel)]='username' ></td>
+                </tr>
+                <tr *ngIf = '!updateUser'>
+                    <td>Lozinka:</td>
+                    <td><input type="password" placeholder="Lozinka" name="password" required [(ngModel)]='password' ></td>
+                </tr>
+                <tr *ngIf = '!updateUser'>
+                    <td>Potvrda lozinke:</td>
+                    <td><input type="password" placeholder="Potvrda lozinke" name="passwordAgain" required [(ngModel)]='passwordAgain' > </td>
+                    <td><span name="message">{{message}}</span></td>
+                </tr>
+                <tr>
+                    <td>Profilna slika:</td>
+                    <td><input type="file"  (change)='fileSelected($event)' accept=".jpg, .jpeg, .png" ></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" placeholder="Email" name="email" required [(ngModel)]='email'></td>
+                </tr>
+                <tr>
+                    <td>Grad:</td>
+                    <td><input type="text" placeholder="Grad" name="city" required [(ngModel)]='city'></td>
+                </tr>
+                <tr>
+                    <td>Drzava:</td>
+                    <td><input type="text" placeholder="Drzava" name="country" required [(ngModel)]='country'></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button (click)='register()' *ngIf = '!updateUser'>Registruj se</button></td>
+                </tr>
+            </table>
+                
+            
+            <button (click)='update()' *ngIf = 'updateUser'>Ažuriraj profil</button>
+            
+        </form>
+        <span style="text-align: center; color: red; font-size: 1.3rem;">{{msg}}</span>
+        <span *ngIf = '!updateUser'>Vaš zahtev za registraciju će biti prosleđen adminu, molimo Vas da sačekate da admin prihvati registraciju.</span> 
+    </div>
+    
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>

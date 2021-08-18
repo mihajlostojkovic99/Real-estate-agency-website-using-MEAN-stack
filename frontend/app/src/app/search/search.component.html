@@ -1,0 +1,74 @@
+<div class="search">
+    <div class="homeSearchForm">
+        <h2>Brza pretraga nekretnina:</h2>
+        <form>
+            <select [(ngModel)]='city' name="city">
+                <option selected value="">--Izaberite grad--</option>
+                <option *ngFor='let c of cities'>{{c}}</option>
+            </select>
+            
+            <input type="number" name="minPrice" placeholder="min cena" [(ngModel)]='minPrice'>
+            <input type="number" name="maxPrice" placeholder="max cena" [(ngModel)]='maxPrice'>
+            <span>Cene izraziti u evrima.</span>
+            <button (click)='search()'>Pretraga</button> 
+        </form>
+    </div>
+        
+    
+    <div class="searchResult" *ngIf = '!flagLogged'>
+        <div *ngFor = 'let l of lots' class="lot">
+            <div class="lotImage" id="{{l.id}}">{{getImage(l)}}</div>
+            <table>
+                <tr>
+                    <td>Tip:</td>
+                    <td>{{l.type}} <span *ngIf='l.rent'> na izdavanje</span><span *ngIf='!l.rent'> na prodaju</span></td>
+                </tr>
+                <tr>
+                    <td>Broj soba:</td>
+                    <td>{{l.rooms}}</td>
+                </tr>
+                <tr>
+                    <td>Kvadratura:</td>
+                    <td>{{l.sqMeters}}m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>Ulica:</td>
+                    <td>{{l.street}}</td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td>{{l.price}}EUR</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+<!-- Ako je korisnik ulogovan -->
+    <div class="searchResult" *ngIf = 'flagLogged'>
+        <div *ngFor = 'let l of lots' (click) = 'goToLot(l)' class="loggedIn lot">
+            <div class="lotImage" id="{{l.id}}">{{getImage(l)}}</div>
+            <table>
+                <tr>
+                    <td>Tip:</td>
+                    <td>{{l.type}} <span *ngIf='l.rent'> na izdavanje</span><span *ngIf='!l.rent'> na prodaju</span></td>
+                </tr>
+                <tr>
+                    <td>Broj soba:</td>
+                    <td>{{l.rooms}}</td>
+                </tr>
+                <tr>
+                    <td>Kvadratura:</td>
+                    <td>{{l.sqMeters}}m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>Ulica:</td>
+                    <td>{{l.street}}</td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td>{{l.price}}EUR</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

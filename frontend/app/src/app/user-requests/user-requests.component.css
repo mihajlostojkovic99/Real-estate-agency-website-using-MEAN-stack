@@ -1,0 +1,89 @@
+
+.userRequests{
+    display: grid;
+    min-height: 100vh;
+    position:relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em 35% auto 15%;
+    grid-template-areas: 
+    "header"
+    "allRentRequests"
+    "allBuyRequests"
+    "footer"
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+.header {
+    grid-area: header;
+}
+
+.allRentRequests {
+    grid-area: allRentRequests;
+    min-height: 35vh;
+    margin-top: 1rem;
+    font-size: 1.1em;
+}
+
+.allBuyRequests {
+    grid-area: allBuyRequests;
+    min-height: 34vh;
+    margin-top: 1rem;
+    font-size: 1.1em;
+}
+
+.allRentRequests table, .allBuyRequests table {
+    width: 100%;
+    text-align: center;
+}
+
+.allRentRequests table, .allRentRequests th, .allRentRequests td {
+    border: 2px solid rgba(28, 27, 32, 1);
+    border-collapse: collapse;
+}
+
+.allBuyRequests table, .allBuyRequests th, .allBuyRequests td {
+    border: 2px solid rgba(28, 27, 32, 1);
+    border-collapse: collapse;
+}
+
+.allRentRequests th, .allBuyRequests th {
+    background: rgba(252, 89, 86, 1);
+    color: rgba(248, 248, 248, 1);
+}
+
+.allRentRequests input, .allBuyRequests input {
+    /* width: 95%; */
+    /* padding: 0; */
+    font-size: 1em;
+    color: rgba(252, 89, 86, 1);
+    /* margin-bottom: .5em; */
+    border-radius: 6px;
+}
+
+.allRentRequests button, .allBuyRequests button {
+    margin: 0;
+    padding: 0;
+    min-width: 6em;
+    width: 100%;
+    height: 2.3em;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(252, 89, 86, 1);
+    border: none;
+    cursor: pointer;
+    color: rgba(28, 27, 32, 1);
+    /* border-radius: 15px; */
+}
+
+.allRentRequests button:hover, .allBuyRequests button:hover {
+    background: rgba(252, 89, 86, .8);
+    
+}
+
+table span {
+    font-weight: 600;
+}

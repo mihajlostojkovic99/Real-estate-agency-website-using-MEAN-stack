@@ -1,0 +1,87 @@
+<div class="register">
+    <div class="header"><app-header></app-header></div>
+    <div class="registerForm">
+        <h2>Nova nekretnina</h2>
+        <form ngNoForm>
+            <table>
+                <tr>
+                    <td>Opis:</td>
+                    <td><textarea name="desc" cols="60" rows="3" [(ngModel)]='description' required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Grad:</td>
+                    <td><input type="text" placeholder="Grad" name="grad" required [(ngModel)]='city' ></td>
+                </tr>
+                <tr>
+                    <td>Opština:</td>
+                    <td><input type="text" placeholder="Opština" name="Opština" required [(ngModel)]='district' ></td>
+                </tr>
+                <tr>
+                    <td>Ulica:</td>
+                    <td><input type="text" placeholder="Ulica" name="Ulica" required [(ngModel)]='street' ></td>
+                </tr>
+                <tr>
+                    <td>Broj:</td>
+                    <td><input type="text" placeholder="Broj" name="Broj" required [(ngModel)]='number' ></td>
+                </tr>
+                <tr>
+                    <td>Tip:</td>
+                    <td><select [(ngModel)]='type' name="tip" required>
+                        <option value="stan">Stan</option>
+                        <option value="kuca">Kuća</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Sprat(broj spratova ako je kuća):</td>
+                    <td><input type="text" placeholder="Sprat" name="Sprat" required [(ngModel)]='floor'></td>
+                </tr>
+                <tr *ngIf = 'type == "stan"'>
+                    <td>Broj spratova u zgradi:</td>
+                    <td><input type="text" placeholder="Broj spratova u zgradi" name="brSpratova" required [(ngModel)]='totalFloors'></td>
+                </tr>
+                <tr>
+                    <td>Površina:</td>
+                    <td><input type="text" placeholder="Površina" name="Povrsina" required [(ngModel)]='sqMeters'></td>
+                </tr>
+                <tr>
+                    <td>Broj soba:</td>
+                    <td><input type="number" placeholder="Broj soba" name="BrojSoba" required [(ngModel)]='rooms'></td>
+                </tr>
+                <tr>
+                    <td>Namešten:</td>
+                    <td><select [(ngModel)]='equipped' name="namesten" required>
+                        <option [value]="true">Da</option>
+                        <option [value]="false">Ne</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Iznajmljivanje ili prodaja:</td>
+                    <td><select [(ngModel)]='rent' name="rent" required>
+                        <option value="true">Iznajmljivanje</option>
+                        <option value="false">Prodaja</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td><input type="number" placeholder="Cena" name="Cena" required [(ngModel)]='price'></td>
+                </tr>
+                <tr>
+                    <td>Slike:</td>
+                    <td><input type="file"  (change)='fileSelected($event)' accept=".jpg, .jpeg, .png" multiple required></td>
+                </tr>
+                <tr>
+                    <td>Video:</td>
+                    <td><input type="file"  (change)='fileSelectedVideo($event)' accept=".mp4, .mkv, .avi"></td>
+                </tr>
+            </table>
+            <button (click)='add()'>Dodaj nekretninu</button>
+            
+        </form>
+        <span>{{msg}}</span> <br>
+        Vaš zahtev za dodavanjem nove nekretnine će biti prosleđen, molimo Vas da sačekate da se nova nekretnina prihvati.
+    </div>
+    
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>

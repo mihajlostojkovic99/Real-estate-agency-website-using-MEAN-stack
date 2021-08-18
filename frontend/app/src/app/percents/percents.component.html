@@ -1,0 +1,25 @@
+<div class="register">
+    <div class="header"><app-header></app-header></div>
+    <div class="registerForm">
+        <h2>Procenti za posredovanje</h2>
+        <form>
+            <table>
+                <tr>
+                    <td>Procenat za posredovanje u prodaji:</td>
+                    <td><input type="text" name="name" [(ngModel)]='sellPercent' required></td>
+                </tr>
+                <tr>
+                    <td>Procenat za posredovanje u iznajmljivanju:</td>
+                    <td><input type="text" name="surname" required [(ngModel)]='rentPercent' ></td>
+                </tr>
+            </table>
+            <button (click)='change()'>Promeni procente za posredovanje</button>
+            
+        </form>
+    </div>
+    
+    <div class="footer">
+        <app-footer></app-footer>  
+    </div>
+</div>
+

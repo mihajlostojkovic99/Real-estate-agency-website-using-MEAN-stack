@@ -1,0 +1,46 @@
+/*---------- CSS ZA FOOTER ----------*/
+
+footer {
+    background: rgba(252, 89, 86, 1);
+    color: rgba(248, 248, 248, 1);
+    border-top: 3px solid rgba(248, 248, 248, 1);
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-areas: 
+    ". div1 div2 div3 div4 ."
+    ". copyright copyright copyright copyright .";
+}
+
+footer .div1 {
+    grid-area: div1;
+    border-right: 3px solid rgba(248, 248, 248, 1);
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+footer .div2 {
+    grid-area: div2;
+    border-right: 3px solid rgba(248, 248, 248, 1);
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+footer .div3 {
+    grid-area: div3;
+    border-right: 3px solid rgba(248, 248, 248, 1);
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+footer .div4 {
+    grid-area: div4;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+footer .copyright {
+    grid-area: copyright;
+    text-align: center;
+    margin-bottom: .2em;
+    margin-top: .5em;
+}

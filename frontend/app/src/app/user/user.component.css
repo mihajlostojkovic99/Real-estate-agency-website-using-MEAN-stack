@@ -1,0 +1,37 @@
+.user {
+      /* position: absolute; */
+      display: grid;
+      /* max-height: 300px; */
+      /* grid-template-rows: auto, 1fr, 1fr; */
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: auto auto auto 15%;
+      grid-template-areas: 
+      "header header"
+      "img img"
+      "search search"
+      "footer footer"
+}
+
+.search {
+    grid-area: search;
+}
+
+.footer {
+    grid-area: footer;
+    
+}
+
+.header {
+    grid-area: header;
+    max-height: max-content;
+}
+
+.index-image {
+    /* grid-row: 2/span 1; */
+    grid-area: img;
+    /* width: 100%; */
+    height: 50rem;
+    /* height: 100%; */
+    /* background-image: url('https://source.unsplash.com/random/1270x800'); */
+    background-size: cover;
+}
