@@ -5,7 +5,7 @@ Web application for an agency renting and selling real estate. The app implement
 * Agency employee
 
 ## Basic details
-While registering some fields are mandatory and password regex is implemented for a secure password. Admin has to approve or deny every registration. He can also manually add a User to the system. Users can at any point change their details and password. When registering, user data that must be provided is:
+While registering, some fields are mandatory and a password regex is implemented for a secure password. Admin has to approve or deny every registration. He can also manually add a User to the system. Users can at any point change their details and password. When registering, user data that must be provided is:
 * Name
 * Surname
 * Username (unique and can't be changed)
