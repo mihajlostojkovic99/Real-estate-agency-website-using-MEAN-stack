@@ -55,4 +55,4 @@ The application has a uniform look accomplished using pure CSS. Every page has a
 ### Authorisation
 Authorisation is implemeted within the CMS(Content Management System). Levels of access are: guest, registered user, agent and admin. Web pages are allowed only to a single category of users, and not allowed to other types.
 ### Technologies
-The web site is made using Angular framework with Express and NodeJS in the backend with the use of a noSQL MongoDB database. It is relatively responsive in design but I didn't implement a proper smartphone view.
+The web site is made using Angular framework with Express and NodeJS in the backend with the use of a noSQL MongoDB database.
