@@ -18,7 +18,7 @@ While registering, some fields are mandatory and a password regex is implemented
 
 ## Guest/Front Page
 Guests have reduced access to the site. They can do a reduced search of real estate but cannot click on them for further details.\
-Search results are shown as *"cards"*. The card shows some basic description and one random picture of the apartment/house. Advertised real estate is shown above the search results in form of big pictures with arrows on both sides for scrolling through the advertisements.
+Search results are shown as *"cards"*. The *card* shows some basic description and one random picture of the apartment/house. Advertised real estate is shown above the search results in form of big pictures with arrows on both sides for scrolling through the advertisements.
 
 ## Registered User
 In addition to the above, a registered user can click on the *"card"* to view details on a new page. Every property has the following details:
@@ -49,7 +49,7 @@ Admin is a user with special privileges. Admin can add/update/delete users, can 
 
 ## Technical characteristics of the application
 ### Navigation
-The application has a navigation bar on top with dropdown menus which dynamically change with a different type of user. It is elegantly made with fluid animations and ajusts with resizing.
+The application has a navigation bar on top with dropdown menus which dynamically change with a different type of user. It is elegantly made with fluid animations and adjusts with resizing (though not mobile friendly).
 ### Uniformity
 The application has a uniform look accomplished using pure CSS. Every page has a header and a footer, home page button and a logout button.
 ### Authorisation
